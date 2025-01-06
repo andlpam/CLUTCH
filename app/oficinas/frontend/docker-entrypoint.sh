@@ -1,11 +1,9 @@
-#!/bin/sh
-set -e
-
-# Run command with node if the first argument contains a "-" or is not a system command. The last
-# part inside the "{}" is a workaround for the following bug in ash/dash:
+rst argument contamand. The last
+h:
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=874264
-if [ "${1#-}" != "${1}" ] || [ -z "$(command -v "${1}")" ] || { [ -f "${1}" ] && ! [ -x "${1}" ]; }; then
-  set -- node "$@"
+if [ "${1#-}" != "${1}" ] -z "$( || { [
+  && curl -fsSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
+  && t -- node "$@"
 fi
 
 exec "$@"
