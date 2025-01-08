@@ -1,0 +1,30 @@
+name: Build, Test ,Deploy and Report the oficine code
+
+on: push
+
+jobs:
+    build with Docker:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Use the checkout feature
+          uses: actions/checkout@v4
+        - name: Use cache for optimization
+          uses: actions/cache@v4
+          id: cache
+          with:
+            path: node_modules
+            key: deps-node-modules-${{ hashFiles('**/package-lock.json')}}
+        - name: Install Dependencies
+          if: steps.cache.outputs-hit != 'true'
+          run: npm ci
+        - name: Build website
+          run: npm run build
+
+    Test servers:
+      environment: Testing
+      runs-on: ubuntu-latest
+      container:
+        image: node:18-alpine
+      steps:
+        - name: Testing files
+          run: npm run test
