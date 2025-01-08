@@ -25,6 +25,6 @@ jobs:
      runs-on: ubuntu-latest
      container:
       image: node:18-alpine
-      steps:
+     steps:
         - name: Testing files
         run: npm run test
