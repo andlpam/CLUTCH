@@ -8,6 +8,8 @@ jobs:
       steps:
         - name: Use the checkout feature
           uses: actions/checkout@v4
+        - name: Setup nodde js
+          uses: actions/setup-node@v4
         - name: Use cache for optimization
           uses: actions/cache@v4
           id: cache
